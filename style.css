@@ -1,0 +1,293 @@
+/* ===== LG-style reset & tokens ===== */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+:root{
+  /* Surface & lines */
+  --page-bg:#F5EFE6;         /* warm sand background like reference */
+  --card-bg:#FFFFFF;         /* pure white cards */
+  --card-line:#E9E2D6;       /* faint beige hairline on cards/containers */
+
+  /* Text */
+  --ink-900:#0E0E0E;         /* headings (almost black) */
+  --ink-700:#2A2A2A;         /* strong body */
+  --ink-500:#6A6A6A;         /* secondary copy */
+
+  /* Controls */
+  --pill-line:#CFC7BC;       /* outline for ghost buttons */
+  --pill-hover:#111111;      /* hover fill for ghost */
+  --accent:#E60023;          /* action/red for CTA like “Buy Now” */
+
+  /* Geometry */
+  --radius-xl:28px;          /* big card radius from reference tiles */
+  --radius-lg:22px;          /* small tiles radius */
+}
+
+/* ===== Base ===== */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Poppins", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+  background:var(--page-bg);
+  color:var(--ink-700);
+}
+
+/* ===== Header (flat white, hairline bottom) ===== */
+header{
+  position:sticky; top:0; z-index:1000;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:.8rem 1.5rem;
+  background:#fff;
+  color:var(--ink-900);
+  border-bottom:1px solid var(--card-line);
+  border-radius:0;
+  box-shadow:none;
+}
+.logo-container{display:flex; align-items:center; gap:.6rem}
+.logo-container img{height:40px}
+.phone{font-weight:700; font-size:1.05rem; color:var(--ink-900)}
+
+.hamburger{display:none; flex-direction:column; width:38px; height:38px; cursor:pointer; position:absolute; top:16px; right:18px}
+.hamburger span{height:4px; width:100%; background:var(--ink-900); margin:5px 0; border-radius:2px; transition:.3s}
+.hamburger.active span:nth-child(1){transform: rotate(55deg) translate(7px,6px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform: rotate(-60deg) translate(13px,-8px)}
+
+nav ul{list-style:none; display:flex; gap:1.2rem; margin:0; padding:0; align-items:center}
+nav ul li a{
+  color:var(--ink-900);
+  text-decoration:none; font-weight:600; font-size:1rem;
+  padding:.45rem .9rem; border-radius:999px; transition:background .15s ease, color .15s ease;
+}
+nav ul li a:hover{background:#F1EEE7}
+nav ul li a.active{background:#111; color:#fff}
+
+/* ===== Layout container ===== */
+.container{max-width:1280px; margin:2rem auto; padding:0 1rem}
+
+/* ===== Hero block ===== */
+.hero{
+  background:var(--card-bg);
+  border:1px solid var(--card-line);
+  border-radius:var(--radius-xl);
+  padding:2.2rem 2rem;
+  box-shadow:none;
+}
+h1{
+  color:var(--ink-900);
+  font-size:clamp(36px, 4.8vw, 64px);
+  line-height:1.1;
+  margin:.2rem 0 .6rem;
+}
+.subtitle{color:var(--ink-500); margin:.2rem 0 1rem}
+
+/* CTA cluster (kept from your HTML, recolored) */
+.call-us-highlight{display:flex; align-items:center; gap:.8rem; flex-wrap:wrap; margin-top:1rem}
+.call-us-link{
+  display:flex; align-items:center; gap:.55rem;
+  font-weight:700; text-decoration:none; color:var(--ink-900);
+  border:1px solid var(--pill-line);
+  border-radius:999px; padding:.6rem 1.2rem; background:#fff;
+  transition:all .18s ease;
+}
+.call-us-link:hover{background:#111; color:#fff; border-color:#111}
+.call-us-link i{color:inherit}
+.cta-whatsapp{border-color:#BFD9BF}
+
+/* Trust badges */
+.trust-badges{display:flex; gap:1rem; flex-wrap:wrap; margin-top:.8rem}
+.trust-badges span{
+  background:#F6F1E9; border:1px solid var(--card-line);
+  padding:.35rem .7rem; border-radius:999px; font-weight:600; color:var(--ink-700)
+}
+
+/* ===== Overview section tiles ===== */
+.services{
+  display:grid; grid-template-columns: repeat(3,1fr);
+  gap:1.5rem; margin-top:1.6rem;
+}
+.service-box{
+  background:var(--card-bg);
+  border:1px solid var(--card-line);
+  border-radius:var(--radius-xl);
+  overflow:hidden; margin:0; padding:0; box-shadow:none;
+  transition:transform .18s ease;
+}
+.service-box:hover{transform:translateY(-2px)}
+.service-box img{
+  width:100%; height:180px; object-fit:cover;
+  border-radius:var(--radius-xl) var(--radius-xl) 0 0; margin:0;
+}
+.service-box h2{
+  color:var(--ink-900); font-weight:700; font-size:1.6rem;
+  margin:1.1rem 1.3rem .4rem;
+}
+.service-box p{color:var(--ink-500); margin:0 1.3rem 1.2rem; line-height:1.55}
+
+/* “Learn more” ghost pill (like reference) */
+.services .service-box .learn-more,
+.service-box a.button,
+button.learn-more{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:48px; padding:0 22px; margin:0 0 1.2rem 1.3rem;
+  font-weight:600; color:var(--ink-900); text-decoration:none;
+  border:1px solid var(--pill-line); background:#fff; border-radius:999px;
+  transition:all .15s ease;
+}
+.services .service-box .learn-more:hover,
+.service-box a.button:hover,
+button.learn-more:hover{background:var(--pill-hover); color:#fff; border-color:var(--pill-hover)}
+
+/* ===== Section blocks ===== */
+.section-intro{margin:.2rem 0 1rem; color:var(--ink-500)}
+.service-cards{margin-top:2rem}
+
+/* Heading like “Split Air Conditioner” */
+.service-cards > h2{
+  font-size:clamp(28px, 3.4vw, 56px);
+  color:var(--ink-900);
+  margin:0 0 1rem;
+}
+
+/* Grid of small service cards */
+.card-row{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; margin-bottom:1.4rem;
+}
+.service-card{
+  background:var(--card-bg);
+  border:1px solid var(--card-line);
+  border-radius:var(--radius-lg);
+  padding:1.1rem;
+  text-align:center; min-height:240px;
+  box-shadow:none; transition:transform .15s ease, border-color .15s ease;
+}
+.service-card:hover{transform:translateY(-3px); border-color:#D9D2C6}
+.service-card img{width:100%; height:150px; object-fit:cover; border-radius:16px}
+.service-card div{
+  font-weight:700; color:var(--ink-900); font-size:1.1rem; margin-top:1.1rem;
+}
+
+/* Remove stray/duplicate .meta definitions from your original CSS */
+.service-box .meta, .service-card .meta { display:none }
+
+/* ===== Brand strip ===== */
+.brand-strip{
+  overflow:hidden; width:100%; height:64px;
+  margin:1.2rem 0 .2rem;
+  background:#F1EBE3; border:1px solid var(--card-line);
+  border-radius:12px; display:flex; align-items:center;
+}
+.brand-track{display:flex; align-items:center; gap:2.2rem; min-width:100%}
+.brand-track img{height:36px; width:auto; object-fit:contain; filter:grayscale(.1); opacity:.95}
+
+/* ===== Footer ===== */
+footer{
+  text-align:center; padding:1.2rem 1rem; background:#F3EEE6;
+  font-size:.95rem; margin-top:2rem; border-top:1px solid var(--card-line); color:var(--ink-700)
+}
+.footer-columns{
+  display:grid; grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:2rem; max-width:1280px; margin:0 auto 1rem; text-align:left;
+}
+.footer-col h2{color:var(--ink-900); font-size:1.1rem; margin:.2rem 0 .4rem}
+
+/* ===== Floating actions ===== */
+.whatsapp-float{position:fixed; right:20px; bottom:50%; transform:translateY(50%); z-index:1000}
+.whatsapp-float img{width:55px; height:55px}
+
+/* ===== Responsive ===== */
+@media (max-width:1200px){
+  .container{max-width:1100px}
+}
+@media (max-width:1100px){
+  .card-row{grid-template-columns:repeat(2,1fr)}
+  .services{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:880px){
+  header{flex-direction:column; align-items:stretch; gap:.5rem; padding:1rem .5rem}
+  .phone{display:none}
+  .hamburger{display:flex}
+  nav{width:100%}
+  nav ul{
+    flex-direction:column; width:100%; align-items:flex-start;
+    background:#fff; border-bottom:1px solid var(--card-line);
+    position:absolute; left:0; top:100%;
+    max-height:0; overflow:hidden; padding:0; transition:max-height .3s;
+  }
+  nav ul.open{max-height:420px; padding:.5rem 0}
+  nav ul li{width:100%}
+  nav ul li a{width:100%; text-align:left; padding:.9rem 1.2rem}
+}
+@media (max-width:640px){
+  .services{grid-template-columns:1fr}
+  .card-row{grid-template-columns:1fr}
+  .footer-columns{grid-template-columns:1fr}
+}
+/* ===== Feature banner (LG-style) ===== */
+.feature-block{margin:2.2rem 0}
+.feature-heading{
+  font-size:clamp(28px,3.4vw,56px);
+  font-weight:700;
+  color:var(--ink-900);
+  margin:0 0 1rem;
+}
+.banner-card{
+  position:relative;
+  border:1px solid var(--card-line);
+  background:#fff;
+  border-radius:var(--radius-xl);
+  overflow:hidden;
+  min-height:540px;          /* height like the reference */
+}
+
+/* background image via CSS var */
+.banner-card::before{
+  content:"";
+  position:absolute; inset:0;
+  background-image:var(--banner-img, none);
+  background-size:cover;
+  background-position:center;
+}
+
+/* left-side soft white so text pops, fades to transparent */
+.banner-card::after{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(90deg,
+      rgba(255,255,255,.95) 0%,
+      rgba(255,255,255,.90) 38%,
+      rgba(255,255,255,.50) 58%,
+      rgba(255,255,255,0)   72%);
+}
+
+/* text block */
+.banner-content{
+  position:relative; z-index:1;
+  max-width:820px;
+  padding:3.2rem 3rem;
+}
+.banner-title{
+  margin:0;
+  font-size:clamp(28px,3.8vw,64px);
+  line-height:1.1;
+  color:var(--ink-900);
+}
+
+/* quick helpers to set different images per banner */
+.banner--ac     { --banner-img: url("./assets/images/banners/ac-hero.jpg"); }
+.banner--fridge { --banner-img: url("./assets/images/banners/fridge-hero.jpg"); }
+.banner--wash   { --banner-img: url("./assets/images/banners/wm-hero.jpg"); }
+
+/* responsive */
+@media (max-width:880px){
+  .banner-card{min-height:420px}
+  .banner-content{padding:2.2rem}
+  .banner-card::after{
+    background:linear-gradient(90deg,
+      rgba(255,255,255,.96) 0 55%,
+      rgba(255,255,255,.0) 85%);
+  }
+}
+@media (max-width:560px){
+  .banner-card{min-height:360px}
+}
